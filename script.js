@@ -20,49 +20,82 @@ const sounds = {
 54: 'f1',
 55: 'f1s',
 56: 'e1',
-57: 'e1s', //9
+57: 'e1s' //9
 
-82:     //R
-83:
-84:
-85:     //F
-86:
-87:
-88:     //V
-89:
-90:
 }
 
 const chanel1 = []
-let isRecording = false
+const chanel2 = []
+const chanel3 = []
+const chanel4 = []
+let isRecording1 = false
+let isRecording2 = false
+let isRecording3 = false
+let isRecording4 = false
 let recStart = 0
 
-function recAudio(e){
-
+function recAudio1(e){
     recStart = Date.now()
-    isRecording = !isRecording
-    e.target.innerHTML = isRecording ? "Stop" : "Nagrywaj"
-
+    isRecording1 = !isRecording1
+    e.target.innerHTML = isRecording1 ? "Stop" : "Rec Ch1"
+}
+function recAudio2(e){
+    recStart = Date.now()
+    isRecording2 = !isRecording2
+    e.target.innerHTML = isRecording2 ? "Stop" : "Rec Ch2"
+}
+function recAudio3(e){
+    recStart = Date.now()
+    isRecording3 = !isRecording3
+    e.target.innerHTML = isRecording3 ? "Stop" : "Rec Ch3"
+}
+function recAudio4(e){
+    recStart = Date.now()
+    isRecording4 = !isRecording4
+    e.target.innerHTML = isRecording4 ? "Stop" : "Rec Ch4"
 }
 
 function appStart(){
     window.addEventListener('keypress',playSound)
-    document.querySelector('#rec').addEventListener('click', recAudio)
+    document.querySelector('#rec').addEventListener('click', recAudio1)
+    document.querySelector('#rec1').addEventListener('click', recAudio2)
+    document.querySelector('#rec2').addEventListener('click', recAudio3)
+    document.querySelector('#rec3').addEventListener('click', recAudio4)
     document.querySelector('#play').addEventListener('click', playAudio)
+    document.querySelector('#play1').addEventListener('click', playAudio1)
+    document.querySelector('#play2').addEventListener('click', playAudio2)
+    document.querySelector('#play3').addEventListener('click', playAudio3)
+    document.querySelector('#playAllCh').addEventListener('click', playAudioAll)
 }
 
 function playSound(e){
     if(!sounds[e.charCode]){
         return
     }
-
     const soundName = sounds[e.charCode]
     audioDom = document.querySelector(`#${soundName}`)
     audioDom.currentTime = 0
     audioDom.play()
-
-    if(isRecording){
+    if(isRecording1){
         chanel1.push({
+            name: soundName,
+            time: Date.now()-recStart
+        })
+    }
+    if(isRecording2){
+        chanel2.push({
+            name: soundName,
+            time: Date.now()-recStart
+        })
+    }
+    if(isRecording3){
+        chanel3.push({
+            name: soundName,
+            time: Date.now()-recStart
+        })
+    }
+    if(isRecording4){
+        chanel4.push({
             name: soundName,
             time: Date.now()-recStart
         })
@@ -80,7 +113,77 @@ function playAudio(){
         )
     })
 }
-
+function playAudio1(){
+    chanel2.forEach(sound =>{
+        setTimeout(
+            ()=>{
+                const audioDOM = document.querySelector(`#${sound.name}`)
+                audioDOM.currentTime = 0
+                audioDOM.play()
+            }, sound.time
+        )
+    })
+}
+function playAudio2(){
+    chanel3.forEach(sound =>{
+        setTimeout(
+            ()=>{
+                const audioDOM = document.querySelector(`#${sound.name}`)
+                audioDOM.currentTime = 0
+                audioDOM.play()
+            }, sound.time
+        )
+    })
+}
+function playAudio3(){
+    chanel4.forEach(sound =>{
+        setTimeout(
+            ()=>{
+                const audioDOM = document.querySelector(`#${sound.name}`)
+                audioDOM.currentTime = 0
+                audioDOM.play()
+            }, sound.time
+        )
+    })
+}
+function playAudioAll(){
+    chanel1.forEach(sound =>{
+        setTimeout(
+            ()=>{
+                const audioDOM = document.querySelector(`#${sound.name}`)
+                audioDOM.currentTime = 0
+                audioDOM.play()
+            }, sound.time
+        )
+    })
+    chanel2.forEach(sound =>{
+        setTimeout(
+            ()=>{
+                const audioDOM = document.querySelector(`#${sound.name}`)
+                audioDOM.currentTime = 0
+                audioDOM.play()
+            }, sound.time
+        )
+    })
+    chanel3.forEach(sound =>{
+        setTimeout(
+            ()=>{
+                const audioDOM = document.querySelector(`#${sound.name}`)
+                audioDOM.currentTime = 0
+                audioDOM.play()
+            }, sound.time
+        )
+    })
+    chanel4.forEach(sound =>{
+        setTimeout(
+            ()=>{
+                const audioDOM = document.querySelector(`#${sound.name}`)
+                audioDOM.currentTime = 0
+                audioDOM.play()
+            }, sound.time
+        )
+    })
+}
 
 function openTab(evt, instrument) {
     let i, tabcontent, tablinks;
@@ -101,9 +204,7 @@ function openTab(evt, instrument) {
 
 }
 
-window.onload = function(){
-    openTab(event, 'Perkusja')
-};
+
 
 
 

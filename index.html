@@ -9,13 +9,21 @@
     <title>Document</title>
 </head>
 <body>
-
     <div class="tab">
         <button class="tablinks" onclick="openTab(event, 'Perkusja')">Perkusja</button>
         <button class="tablinks" onclick="openTab(event, 'Pianino')">Pianino</button>
-        <button class="tablinks" onclick="openTab(event, 'Gitara')">Gitara</button>
-        <button id="rec">Nagrywaj</button>
-        <button id="play">Odtwarzaj</button>
+    </div>
+    <div class="tab">
+        
+        <button id="rec">Rec Ch1</button>
+        <button id="rec1">Rec Ch2</button>
+        <button id="rec2">Rec Ch3</button>
+        <button id="rec3">Rec Ch4</button>
+        <button id="play">Play Ch1</button>
+        <button id="play1">Play Ch2</button>
+        <button id="play2">Play Ch3</button>
+        <button id="play3">Play Ch4</button>
+        <button id="playAllCh">Play All Ch</button>
     </div>
         
     <div class="instrumenty" id="Perkusja">
@@ -40,18 +48,6 @@
         <div class="soundButton7 audioButton"><audio src="sounds/f1s.wav" controls id="f1s"></audio>7</div>
         <div class="soundButton8 audioButton"><audio src="sounds/g1.wav" controls id="g1"></audio>8</div>
         <div class="soundButton9 audioButton"><audio src="sounds/g1s.wav" controls id="g1s"></audio>9</div>
-    </div> 
-
-    <div class="instrumenty" id="Gitara">
-        <div class="soundButton1 audioButton"><audio src="sounds/a1.wav" controls id="boom"></audio>R</div>
-        <div class="soundButton2 audioButton"><audio src="sounds/a1s.wav" controls id="clap"></audio>T</div>
-        <div class="soundButton3 audioButton"><audio src="sounds/hihat.wav" controls id="hihat"></audio>Y</div>
-        <div class="soundButton4 audioButton"><audio src="sounds/kick.wav" controls id="kick"></audio>F</div>
-        <div class="soundButton5 audioButton"><audio src="sounds/openhat.wav" controls id="openhat"></audio>G</div>
-        <div class="soundButton6 audioButton"><audio src="sounds/ride.wav" controls id="ride"></audio>H</div>
-        <div class="soundButton7 audioButton"><audio src="sounds/snare.wav" controls id="snare"></audio>V</div>
-        <div class="soundButton8 audioButton"><audio src="sounds/tink.wav" controls id="tink"></audio>B</div>
-        <div class="soundButton9 audioButton"><audio src="sounds/tom.wav" controls id="tom"></audio>N</div>
-    </div>     
+    </div>    
 </body>
 </html>
