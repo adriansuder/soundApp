@@ -23,7 +23,7 @@ const sounds = {
 57: 'e1s' //9
 
 }
-
+//tablice do zapisu nagrań jako 4 kanały
 const chanel1 = []
 const chanel2 = []
 const chanel3 = []
@@ -33,7 +33,7 @@ let isRecording2 = false
 let isRecording3 = false
 let isRecording4 = false
 let recStart = 0
-
+//nagrywanie każdego z kanałów
 function recAudio1(e){
     recStart = Date.now()
     isRecording1 = !isRecording1
@@ -54,7 +54,7 @@ function recAudio4(e){
     isRecording4 = !isRecording4
     e.target.innerHTML = isRecording4 ? "Stop" : "Rec Ch4"
 }
-
+//główna funkcja, event listenery
 function appStart(){
     window.addEventListener('keypress',playSound)
     document.querySelector('#rec').addEventListener('click', recAudio1)
@@ -67,7 +67,7 @@ function appStart(){
     document.querySelector('#play3').addEventListener('click', playAudio3)
     document.querySelector('#playAllCh').addEventListener('click', playAudioAll)
 }
-
+//odtwarzanie dzwieku po kliknieciu danego przycisku, jezeli aktywny jest button rec, wtedy pushujemy do tablicy danego kanału nazwe dzwieku i czas trwania
 function playSound(e){
     if(!sounds[e.charCode]){
         return
@@ -101,7 +101,7 @@ function playSound(e){
         })
     }
 }
-
+//odtwarzanie jednego lub wszystkich kanałów
 function playAudio(){
     chanel1.forEach(sound =>{
         setTimeout(
@@ -184,7 +184,7 @@ function playAudioAll(){
         )
     })
 }
-
+//funkcja podmieniajaca divy na zasadzie 2 kart
 function openTab(evt, instrument) {
     let i, tabcontent, tablinks;
     // Get all elements with class="tabcontent" and hide them
